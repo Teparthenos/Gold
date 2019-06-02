@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+     <script>
+     
+      var config = {
+  apiKey: "AIzaSyBtnxNS0zb5onFWJZJrPSY0Xjw4MUt_Rg8",
+  authDomain: "gold-3f6b7.firebaseapp.com",
+  databaseURL: "https://gold-3f6b7.firebaseio.com",
+  projectId: "gold-3f6b7",
+  storageBucket: "gold-3f6b7.appspot.com",
+  messagingSenderId: "158870760671",
+  appId: "1:158870760671:web:6dc04c47be24b0ed"
+};
+firebase.initializeApp(config);
+var ref = firebase.database().ref();                           
+ref.on("value", function(snapshot) {
+var alllist = "";
+   snapshot.forEach(function(childSnapshot) {
+     var key = childSnapshot.key;
+      // childData will be the actual contents of the child
+      var childData = childSnapshot.val();
+
+
+      var oneitem = `<div class='item'>
+                        <p>Name: `+childData.name+`</p>
+                        <p>Link: `+childData.link+`</p>
+                        <img src = "image.PNG" alt=`+childData.name+ `>
+                      </div> `
+
+                      ;
+
+   
+    alllist=alllist+oneitem;
+
+   });
+
+ document.getElementById("data").innerHTML=alllist;
+  
+}, function (error) {
+   console.log("Error: " + error);
+});
+    </script>
+
+    <title>Gold</title>
+  </head>
+  <body>
+    <h1>Gold</h1>
+    <dev id='data'></dev>
+   
+  </body>
+</html>
