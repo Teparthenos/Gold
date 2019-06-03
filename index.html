@@ -10,7 +10,6 @@
   databaseURL: "https://gold-3f6b7.firebaseio.com",
   projectId: "gold-3f6b7",
   storageBucket: "gold-3f6b7.appspot.com",
-  messagingSenderId: "158870760671",
   appId: "1:158870760671:web:6dc04c47be24b0ed"
 };
 firebase.initializeApp(config);
@@ -23,11 +22,34 @@ var alllist = "";
       var childData = childSnapshot.val();
 
 
-      var oneitem = `<div class='item'>
-                        <p>Name: `+childData.name+`</p>
-                        <p>Link: `+childData.link+`</p>
-                        <img src = " `+childData.name+`.png" alt=`+childData.name+ `>
-                      </div> `
+
+
+      
+      
+
+   
+
+
+
+
+
+
+      var oneitem = `<div class="cards-list">
+  
+                      <div class="card 1">
+                      <div class="card_image">
+                     <img src= "`+childData.name+`.png" alt=`+childData.name+ `>`+
+
+`<div class="card_title title-black">
+    <p>`+childData.name+`</p><br>
+
+    <a href="`+childData.link+`">`+ childData.link+`</a>
+     
+  </div>
+</div>
+
+</div>
+</div> `
 
                       ;
 
@@ -46,8 +68,78 @@ var alllist = "";
     <title>Gold</title>
   </head>
   <body>
+    
     <h1>Gold</h1>
     <dev id='data'></dev>
-   
+    
+ <style>
+
+ .cards-list {
+  z-index: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 30px auto;
+  width: 500px;
+  height: 300px;
+  border-radius: 40px;
+box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.card .card_image {
+  width: 200;
+  height: 250;
+  border-radius: 40px;
+}
+
+.card .card_image img {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+  object-fit: cover;
+}
+
+.card .card_title {
+color: #000;
+  padding: 30 px;
+  margin-top: -220px;
+  margin-right: -200px;
+  margin-left: 300px;
+  text-align: center;
+  font-weight: 100;
+  font-size: 30px;
+  
+}
+
+.card:hover {
+  transform: scale(0.9, 0.9);
+  box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+    -5px -5px 30px 15px rgba(0,0,0,0.22);
+}
+
+.title-white {
+  color: white;
+}
+
+.title-black {
+  color: black;
+}
+
+@media all and (max-width: 500px) {
+  .card-list {
+    /* On small screens, we are no longer using row direction but column */
+    flex-direction: column;
+  }
+}
+
+</style>
+
   </body>
+
 </html>
